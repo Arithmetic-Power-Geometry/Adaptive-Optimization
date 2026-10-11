@@ -1,0 +1,28 @@
+name: Optimizer benchmark
+on:
+  push:
+    paths:
+      - 'experiments/benchmark.py'
+      - '.github/workflows/benchmark.yml'
+  workflow_dispatch:
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - name: Reproduce benchmark
+        run: python experiments/benchmark.py > experiments/run_log.txt
+      - name: Upload per-seed exact outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: exploratory-optimizer-results
+          path: |
+            experiments/raw_results.csv
+            experiments/summary.csv
+            experiments/environment.json
+            experiments/run_log.txt
