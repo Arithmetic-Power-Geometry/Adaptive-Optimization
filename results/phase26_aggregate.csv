@@ -1,0 +1,5 @@
+method,wins_vs_COBYQA_out_of_96,losses_vs_COBYQA_out_of_96,ties,mean_evaluations
+COBYQA,0,0,96,125.1
+BFGS,12,58,26,169.4
+L-BFGS-B,19,48,29,131.7
+WarmBFGS,10,19,67,165.5
