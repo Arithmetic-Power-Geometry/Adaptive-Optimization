@@ -1,0 +1,13 @@
+effective_dimension,method,wins,losses,ties,matched_cases
+4,Embed4,11,1,0,12
+4,Embed8,12,0,0,12
+4,Split4to8,11,1,0,12
+4,Split8to4,12,0,0,12
+12,Embed4,5,7,0,12
+12,Embed8,6,6,0,12
+12,Split4to8,6,6,0,12
+12,Split8to4,6,6,0,12
+20,Embed4,2,10,0,12
+20,Embed8,6,6,0,12
+20,Split4to8,6,6,0,12
+20,Split8to4,6,6,0,12
