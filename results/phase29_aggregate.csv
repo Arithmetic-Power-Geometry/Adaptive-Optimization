@@ -1,0 +1,5 @@
+method,wins_vs_COBYQA,losses_vs_COBYQA,mean_evaluations
+ExpoZigZag,1,47,160.00
+ZigZag,4,39,157.33
+RandomPoll,7,37,156.65
+COBYQA,0,0,110.15
