@@ -1,0 +1,38 @@
+name: Phase 25 dual engine pilot
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/phase25_dual.yml
+permissions:
+  contents: write
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - run: python experiments/phase25_dual/phase25.py
+      - name: Archive results
+        run: |
+          mkdir -p results/phase25_dual
+          cp experiments/phase25_dual/raw_results.csv experiments/phase25_dual/summary.csv experiments/phase25_dual/environment.json results/phase25_dual/
+          sha256sum experiments/phase25_dual/phase25.py results/phase25_dual/* > results/phase25_dual/SHA256SUMS.txt
+      - name: Commit raw results
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/phase25_dual
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archive Phase 25 dual-engine raw pilot'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase25-dual-raw
+          path: results/phase25_dual/
