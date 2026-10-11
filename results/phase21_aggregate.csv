@@ -1,0 +1,5 @@
+method,wins_vs_COBYQA_out_of_72,wins_vs_SymmetricPoll_out_of_72,mean_evaluations
+APGCurvature,14,40,159.375
+SymmetricPoll,13,0,158.7777777777778
+COBYQA,0,54,104.19444444444446
+Powell,12,43,147.09722222222223
