@@ -1,0 +1,38 @@
+name: Phase 18 exact reproduction
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/phase18.yml
+permissions:
+  contents: write
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - run: python experiments/phase18/phase18.py
+      - name: Preserve raw outputs
+        run: |
+          mkdir -p results/phase18
+          cp experiments/phase18/raw_results.csv experiments/phase18/summary.csv experiments/phase18/environment.json results/phase18/
+          sha256sum experiments/phase18/phase18.py results/phase18/* > results/phase18/SHA256SUMS.txt
+      - name: Commit raw records
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/phase18
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archive exact Phase 18 raw benchmark results'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase18-raw
+          path: results/phase18/
