@@ -1,0 +1,31 @@
+name: Phase48 official COCO smoke pilot
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/phase48_coco.yml
+permissions:
+  contents: read
+jobs:
+  coco-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install COCO and comparators
+        run: python -m pip install numpy scipy coco-experiment cma
+      - name: Execute official BBOB smoke suite
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+          OMP_NUM_THREADS: '1'
+        run: python experiments/phase48/coco_pilot.py --mode coco --dimension 10 --functions 1,2 --instances 1-2 --budget-mult 12 --out results/phase48
+      - name: SHA256 evidence
+        run: sha256sum experiments/phase48/coco_pilot.py results/phase48/* > results/phase48/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase48-official-coco-smoke
+          path: results/phase48/
