@@ -1,0 +1,11 @@
+budget,comparison,paired_success_difference,bootstrap_95_low,bootstrap_95_high,challenger_only,adaptive_only
+40,Memory minus Adaptive,4,-0.025,0.05,22,18
+80,Memory minus Adaptive,3,-0.015625,0.034375,10,7
+120,Memory minus Adaptive,21,0.031171875,0.103125,29,8
+180,Memory minus Adaptive,0,-0.015625,0.015625,4,4
+240,Memory minus Adaptive,1,-0.009375,0.015625,3,2
+40,GatedMemory minus Adaptive,4,-0.009375,0.034375,9,5
+80,GatedMemory minus Adaptive,2,-0.00625,0.01875,3,1
+120,GatedMemory minus Adaptive,3,0,0.021875,3,0
+180,GatedMemory minus Adaptive,1,-0.009375,0.01875,3,2
+240,GatedMemory minus Adaptive,1,-0.00625,0.015625,2,1
