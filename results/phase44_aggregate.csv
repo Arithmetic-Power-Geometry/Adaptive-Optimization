@@ -1,0 +1,7 @@
+regime,method,n,wins_embed8,losses_embed8,ties_embed8,wins_cobyqa,losses_cobyqa,ties_cobyqa
+low4,NewBest,8,0,2,6,0,4,4
+low4,SameBest,8,0,2,6,0,4,4
+low4,NewOrigin,8,3,2,3,1,5,2
+full,NewBest,8,4,2,2,0,6,2
+full,SameBest,8,0,2,6,0,6,2
+full,NewOrigin,8,6,0,2,2,4,2
