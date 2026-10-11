@@ -1,0 +1,9 @@
+regime,method,n,wins_full,losses_full,ties_full,wins_embed8,losses_embed8,ties_embed8,mean_calls
+low4,Embed8,6,2,0,4,0,0,6,172.33
+low4,NewBest,6,2,0,4,0,0,6,213.83
+low4,SameBest,6,2,0,4,0,0,6,215.67
+low4,NewOrigin,6,1,0,5,0,3,3,240
+full,Embed8,6,0,6,0,0,0,6,102.5
+full,NewBest,6,0,6,0,6,0,0,157.33
+full,SameBest,6,0,6,0,0,1,5,147.67
+full,NewOrigin,6,0,6,0,3,2,1,161.83
