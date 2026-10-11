@@ -1,0 +1,5 @@
+method,wins,losses,ties,mean_evaluations
+COBYQA,0,0,36,128.33
+RestartBest,4,5,27,162.75
+RestartKick,13,11,12,181.36
+MultiStart,10,12,14,183.50
