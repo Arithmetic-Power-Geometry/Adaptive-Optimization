@@ -1,0 +1,42 @@
+name: Phase 45 anytime ablation
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/phase45.yml
+permissions:
+  contents: write
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - name: Execute matched ablations and traces
+        run: |
+          for d in 8 20; do
+            OPENBLAS_NUM_THREADS=1 python experiments/phase45/phase45.py --dimension "$d"
+          done
+      - name: Archive raw data and anytime traces
+        run: |
+          mkdir -p results/phase45
+          cp experiments/phase45/raw_d*.csv experiments/phase45/traces_d*.csv results/phase45/
+          sha256sum experiments/phase45/phase45.py results/phase45/* > results/phase45/SHA256SUMS.txt
+      - name: Commit raw data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/phase45
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archive Phase45 complete anytime traces'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase45-raw-and-traces
+          path: results/phase45/
