@@ -1,0 +1,9 @@
+function,method,n,wins_vs_COBYQA,losses_vs_COBYQA,ties_vs_COBYQA,median_final_objective
+sphere,Embed8,20,0,20,0,3.014787138141721
+sphere,Restart8,20,0,20,0,0.3710703173418724
+sphere,Gate8Full,20,0,0,20,3.5693756549254294e-27
+sphere,DE,20,0,20,0,12.243792176823893
+rastrigin,Embed8,20,0,20,0,23.42676251177597
+rastrigin,Restart8,20,0,20,0,16.113059468462296
+rastrigin,Gate8Full,20,0,20,0,15.452601192438507
+rastrigin,DE,20,0,20,0,88.75499311266796
