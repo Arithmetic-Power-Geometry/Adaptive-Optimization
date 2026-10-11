@@ -1,0 +1,39 @@
+name: Phase 19 APG reproducibility
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - experiments/phase19/phase19.py
+      - .github/workflows/phase19.yml
+permissions:
+  contents: write
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - run: python experiments/phase19/phase19.py
+      - name: Collect full raw outputs
+        run: |
+          mkdir -p results/phase19
+          cp experiments/phase19/raw_results.csv experiments/phase19/summary.csv experiments/phase19/environment.json results/phase19/
+          sha256sum experiments/phase19/phase19.py results/phase19/* > results/phase19/SHA256SUMS.txt
+      - name: Publish raw results in repository
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/phase19
+          if ! git diff --cached --quiet; then
+            git commit -m 'Commit exact Phase 19 APG benchmark raw results'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase19-raw
+          path: results/phase19/
