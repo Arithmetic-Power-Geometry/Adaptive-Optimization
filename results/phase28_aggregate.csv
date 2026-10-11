@@ -1,0 +1,4 @@
+method,wins_vs_COBYQA,wins_vs_RandomPoll,mean_evaluations
+ZigZag,8,15,157.65
+RandomPoll,9,0,155.98
+COBYQA,0,34,105.25
