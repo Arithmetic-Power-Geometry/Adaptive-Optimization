@@ -1,16 +1,17 @@
 """Phase 24: independent held-out angle replication; same coordinate-plane schedule per instance."""
-import csv,json,hashlib,platform
+import csv, json, hashlib, platform
 from pathlib import Path
 import numpy as np
 import scipy
 from scipy.optimize import minimize
-P=Path(__file__).resolve().parent;B=160
+P=Path(__file__).resolve().parent; B=160
 class Limit(Exception):pass
 class Meter:
  def __init__(self,f):self.f=f;self.n=0;self.best=np.inf
  def __call__(self,x):
   if self.n>=B:raise Limit()
-  self.n+=1;y=float(self.f(np.asarray(x)));self.best=min(self.best,y);return y
+  self.n+=1; y=float(self.f(np.asarray(x)));self.best=min(self.best,y);return y
+
 def problem(name,d,seed):
  rng=np.random.default_rng(seed*17+d*100);Q,_=np.linalg.qr(rng.normal(size=(d,d)));shift=rng.uniform(-2,2,d)
  def f(x):
@@ -20,13 +21,15 @@ def problem(name,d,seed):
   if name=='griewank':return 1+np.sum(z*z)/4000-np.prod(np.cos(z/np.sqrt(np.arange(1,d+1))))
   return np.sum(100*(z[1:]-z[:-1]**2)**2+(1-z[:-1])**2)
  return f,rng.uniform(-3,3,d)
+
 def solve(f,x0,seed,method):
  m=Meter(f)
  if method=='COBYQA':
   try:minimize(m,x0,method='COBYQA',options={'maxfev':B,'maxiter':B})
   except Limit:pass
   return m
- d=len(x0);rng=np.random.default_rng(seed+50000);planes=[tuple(rng.choice(d,2,replace=False)) for _ in range(B)]
+ d=len(x0); rng=np.random.default_rng(seed+50000); planes=[tuple(rng.choice(d,2,replace=False)) for _ in range(B)]
+ # Separate RNG stream for random angles; planes identical in all angle variants.
  angles=np.random.default_rng(seed+72000).uniform(0,2*np.pi,B)
  x=x0.copy();fx=m(x);h=.7;theta=0.;i=0
  while m.n<B and h>1e-7:
@@ -42,6 +45,7 @@ def solve(f,x0,seed,method):
    if fy<fx:x=y;fx=fy;improved=True;break
   h=min(h*1.08,1.5) if improved else h*.7
  return m
+
 rows=[]
 for family in ('ackley','rastrigin','griewank','rosenbrock'):
  for d in (2,5,10):
