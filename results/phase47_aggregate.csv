@@ -1,0 +1,9 @@
+regime,method,n,mean_calls,wins_vs_full,losses_vs_full,ties_vs_full,wins_vs_embed8,losses_vs_embed8,ties_vs_embed8,wins_vs_restart8,losses_vs_restart8,ties_vs_restart8
+low4,Full,6,160,0,0,6,1,5,0,1,5,0
+low4,Embed8,6,158.33,5,1,0,0,0,6,3,0,3
+low4,Restart8,6,160,5,1,0,0,3,3,0,0,6
+low4,Gate8Full,6,160,0,6,0,0,5,1,1,5,0
+full,Full,6,113.33,0,0,6,6,0,0,6,0,0
+full,Embed8,6,94.83,0,6,0,0,0,6,0,6,0
+full,Restart8,6,121.17,0,6,0,6,0,0,0,0,6
+full,Gate8Full,6,132.67,0,3,3,5,1,0,3,3,0
