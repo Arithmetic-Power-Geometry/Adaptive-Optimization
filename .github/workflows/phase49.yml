@@ -1,0 +1,29 @@
+name: Phase49 200-run mock replication
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/phase49.yml
+permissions:
+  contents: read
+jobs:
+  replicate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install numpy scipy
+      - name: Reproduce with mock-mode runner
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+        run: |
+          python experiments/phase49/phase49.py --mode mock --dimension 10 --instances 1-20 --functions 1,2 --budget-mult 12 --methods COBYQA,Embed8,Restart8,Gate8Full,DE --out results/phase49
+          sha256sum experiments/phase49/phase49.py results/phase49/* > results/phase49/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase49-mock-raw-traces
+          path: results/phase49/
