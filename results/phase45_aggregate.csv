@@ -1,0 +1,11 @@
+regime,method,n,mean_calls,W_Full,L_Full,T_Full,W_Embed8,L_Embed8,T_Embed8
+low4,Full,8,168,0,0,8,1,4,3
+low4,Embed8,8,129.38,4,1,3,0,0,8
+low4,NewBest,8,153.62,4,2,2,0,3,5
+low4,SameBest,8,153.5,4,2,2,0,3,5
+low4,NewOrigin,8,168,4,3,1,1,3,4
+full,Full,8,110.75,0,0,8,6,0,2
+full,Embed8,8,79.25,0,6,2,0,0,8
+full,NewBest,8,119.12,0,6,2,4,2,2
+full,SameBest,8,112.25,0,6,2,0,2,6
+full,NewOrigin,8,125.38,0,6,2,3,2,3
