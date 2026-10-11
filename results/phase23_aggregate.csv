@@ -1,0 +1,4 @@
+comparison,golden_wins,other_wins,ties,total
+Golden_vs_Rational,43,21,8,72
+Golden_vs_RandomAngle,41,22,9,72
+Golden_vs_COBYQA,17,48,7,72
