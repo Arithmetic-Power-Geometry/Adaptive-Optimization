@@ -1,4 +1,4 @@
-"""Phase39: 120-call comparison of full COBYQA, Embed8, Embed16, and two-stage Restart8."""
+"""Phase 39: 80-call held-out comparison of full COBYQA, Embed8, Embed16, and two-stage Restart8."""
 import csv,json,platform
 from pathlib import Path
 import numpy as np,scipy
