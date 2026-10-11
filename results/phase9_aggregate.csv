@@ -1,0 +1,5 @@
+method,trials,hits_by_120,hits_by_240,mean_memory_probes
+Adaptive,240,101,133,0
+Memory,240,107,141,22.6375
+Powell,240,148,162,0
+DE,240,74,81,0
