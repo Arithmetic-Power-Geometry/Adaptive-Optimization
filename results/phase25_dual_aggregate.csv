@@ -1,0 +1,5 @@
+method,wins_vs_COBYQA_out_of_48,wins_vs_Powell_out_of_48,wins_vs_best_single_out_of_48,mean_evaluations
+COBYQA,0,28,0,125.33333333333333
+Powell,11,0,0,216.29166666666666
+DualStart,8,26,0,224.47916666666666
+DualWarm,7,28,3,207.45833333333334
