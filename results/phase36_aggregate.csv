@@ -1,0 +1,13 @@
+r,method,wins_vs_cobyqa,losses_vs_cobyqa,ties_vs_cobyqa,wins_vs_embed8,losses_vs_embed8,ties_vs_embed8,n
+4,COBYQA,0,0,12,0,12,0,12
+4,Embed8,12,0,0,0,0,12,12
+4,Embed16,9,3,0,0,12,0,12
+4,Screen8,12,0,0,2,7,3,12
+12,COBYQA,0,0,12,6,6,0,12
+12,Embed8,6,6,0,0,0,12,12
+12,Embed16,7,5,0,12,0,0,12
+12,Screen8,6,6,0,3,9,0,12
+20,COBYQA,0,0,12,6,6,0,12
+20,Embed8,6,6,0,0,0,12,12
+20,Embed16,6,6,0,12,0,0,12
+20,Screen8,6,6,0,9,3,0,12
