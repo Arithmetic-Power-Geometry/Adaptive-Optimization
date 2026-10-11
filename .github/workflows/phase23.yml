@@ -1,0 +1,39 @@
+name: Phase 23 golden-angle ablation
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - experiments/phase23/phase23.py
+      - .github/workflows/phase23.yml
+permissions:
+  contents: write
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - run: python experiments/phase23/phase23.py
+      - name: Archive all outputs
+        run: |
+          mkdir -p results/phase23
+          cp experiments/phase23/raw_results.csv experiments/phase23/summary.csv experiments/phase23/environment.json results/phase23/
+          sha256sum experiments/phase23/phase23.py results/phase23/* > results/phase23/SHA256SUMS.txt
+      - name: Commit reproducibility outputs
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add results/phase23
+          if ! git diff --cached --quiet; then
+            git commit -m 'Archive Phase 23 golden-angle raw results'
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase23-raw-results
+          path: results/phase23/
