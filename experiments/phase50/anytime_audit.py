@@ -4,9 +4,13 @@ No new optimizer is introduced. Recompute all matched comparisons from archived 
 from pathlib import Path
 import pandas as pd
 import numpy as np
-P=Path(__file__).resolve().parents[2]/"results"/"phase49"
-raw=pd.read_csv(P/"raw_results.csv")
-traces=pd.read_csv(P/"traces.csv")
+import argparse
+parser=argparse.ArgumentParser()
+parser.add_argument("--raw",required=True,help="Path to Phase49 raw_results.csv")
+parser.add_argument("--traces",required=True,help="Path to Phase49 traces.csv")
+args=parser.parse_args()
+raw=pd.read_csv(args.raw)
+traces=pd.read_csv(args.traces)
 rows=[]
 for (fun,instance), group in raw.groupby(["function","instance"]):
     base=group.loc[group.method=="COBYQA"].iloc[0]
