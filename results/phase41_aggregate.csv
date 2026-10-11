@@ -1,0 +1,9 @@
+regime,method,n,wins_cobyqa,losses_cobyqa,ties_cobyqa,wins_embed8,losses_embed8,ties_embed8
+low4,Powell,45,23,19,3,4,38,3
+low4,Embed8,45,34,7,4,0,0,45
+low4,Restart8,45,34,8,3,6,33,6
+low4,Portfolio40,45,25,14,6,5,37,3
+full, Powell,45,21,18,6,13,26,6
+full,Embed8,45,26,13,6,0,0,45
+full,Restart8,45,29,10,6,30,6,9
+full,Portfolio40,45,22,14,9,25,14,6
