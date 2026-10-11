@@ -1,0 +1,32 @@
+{
+  "python": "3.13.16",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "budget": 80,
+  "seeds": [
+    3100,
+    3101,
+    3102
+  ],
+  "families": [
+    "sphere",
+    "rastrigin",
+    "rosenbrock"
+  ],
+  "dimensions": [
+    8,
+    20,
+    40
+  ],
+  "regimes": [
+    "low4",
+    "full"
+  ],
+  "methods": [
+    "COBYQA",
+    "Powell",
+    "Embed8",
+    "Restart8"
+  ],
+  "elapsed_seconds": 9.81
+}
