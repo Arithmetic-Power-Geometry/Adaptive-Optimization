@@ -1,0 +1,7 @@
+regime,n,method,wins_cobyqa,losses_cobyqa,ties_cobyqa,wins_powell,losses_powell,ties_powell,wins_embed8,losses_embed8,ties_embed8
+low4,27,Powell,10,17,0,0,0,27,0,27,0
+low4,27,Embed8,20,5,2,27,0,0,0,0,27
+low4,27,Restart8,18,9,0,27,0,0,7,20,0
+full,27,Powell,9,15,3,0,0,27,7,17,3
+full,27,Embed8,14,10,3,17,7,3,0,0,27
+full,27,Restart8,13,11,3,21,3,3,19,5,3
