@@ -1,0 +1,28 @@
+name: Phase 6 gated-memory optimizer benchmark
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'experiments/phase6_gated_memory.py'
+      - '.github/workflows/phase6.yml'
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - name: Reproduce 1200 optimizer runs
+        working-directory: experiments
+        run: python phase6_gated_memory.py > phase6_run_log.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase6-full-run-results
+          path: |
+            experiments/raw_results.csv
+            experiments/summary.csv
+            experiments/trajectories.csv
+            experiments/phase6_run_log.txt
