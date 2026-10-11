@@ -1,0 +1,32 @@
+name: Phase53 mathematical probe bias verification
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/phase53.yml
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install numpy==2.3.5
+      - name: Execute 9600 estimator trials
+        env:
+          OPENBLAS_NUM_THREADS: '1'
+        run: python experiments/phase53/phase53.py
+      - name: Preserve results
+        run: |
+          mkdir -p results/phase53
+          cp experiments/phase53/raw_results.csv experiments/phase53/summary.csv experiments/phase53/environment.json results/phase53/
+          sha256sum experiments/phase53/phase53.py results/phase53/* > results/phase53/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase53-curvature-probe-bias
+          path: results/phase53/
