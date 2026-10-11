@@ -27,3 +27,6 @@ The local executed source and raw CSV must be committed to GitHub and SHA checke
 
 ## Verdict
 The experimental APG rule offers selective median benefits but is inferior to COBYQA on 98/120 matched cases (counting all non-wins, including ties). No established Q1-level algorithmic novelty, theorem or overall performance superiority. Avoid describing this as a breakthrough.
+
+## Paired-win stratification and evaluation usage
+APGPowerPoll wins versus COBYQA by family: Ackley 10/30, Rastrigin 5/30, Griewank 2/30, Rosenbrock 5/30. Eight additional matched cases are numerical ties within tolerance 1e-10. Mean objective calls: APGPowerPoll 180.0, COBYQA 111.28, Powell 155.01, Nelder-Mead 150.66. These are **maximum budgets**, not equal numbers of consumed evaluations; early termination can make baselines cheaper. The source code comment referring to gain/evaluation-distance is inaccurate: the implemented weight uses raw observed gain, not gain divided by distance. The code is authoritative.
