@@ -1,0 +1,9 @@
+regime,n,comparison,wins,losses,ties
+low4,18,Embed8_vs_COBYQA,8,2,8
+low4,18,Restart8_vs_COBYQA,5,7,6
+low4,18,Restart8_vs_Embed8,1,10,7
+low4,18,COBYQA_vs_DE,18,0,0
+full,18,Embed8_vs_COBYQA,2,13,3
+full,18,Restart8_vs_COBYQA,3,12,3
+full,18,Restart8_vs_Embed8,12,3,3
+full,18,COBYQA_vs_DE,18,0,0
