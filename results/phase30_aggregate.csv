@@ -1,0 +1,5 @@
+method,wins_vs_COBYQA,losses_vs_COBYQA,ties,mean_evaluations
+COBYQA,0,0,48,108.44
+Uniform,7,41,0,160.00
+LebesgueProbe,7,21,20,141.00
+GaussianProbe,6,21,21,140.96
