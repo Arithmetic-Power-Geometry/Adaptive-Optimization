@@ -1,0 +1,18 @@
+{
+  "python": "3.13.16",
+  "numpy": "2.3.5",
+  "scipy": "1.17.0",
+  "seeds": [
+    3700,
+    3702
+  ],
+  "budget": 240,
+  "dimension": 20,
+  "methods": [
+    "Full",
+    "Embed8",
+    "NewBest",
+    "SameBest",
+    "NewOrigin"
+  ]
+}
