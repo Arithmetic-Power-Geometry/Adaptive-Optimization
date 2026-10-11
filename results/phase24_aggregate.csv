@@ -1,0 +1,4 @@
+comparison,golden_wins,golden_losses,ties,matched_instances,exploratory_sign_test_p
+Golden_vs_Rational,105,100,35,240,0.7800402214898476
+Golden_vs_RandomAngle,104,104,32,240,1.0
+Golden_vs_COBYQA,39,177,24,240,3.4024830785691713e-22
