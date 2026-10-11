@@ -1,0 +1,5 @@
+method,runs,wins,losses,ties,mean_evaluations,mean_improving_probes
+COBYQA,48,0,0,48,106.8125,0
+Uniform,48,7,20,21,140.458333,0.0625
+Stratified,48,7,20,21,140.666667,0.229167
+Gaussian,48,10,20,18,141.395833,0.375
