@@ -1,0 +1,5 @@
+method,wins,losses,ties,mean_evaluations,extra_global_decisions
+COBYQA,0,0,48,106.291667,0
+PilotOnly,7,19,22,135.354167,0
+AlwaysGlobal,10,21,17,144.437500,48
+MeasureGate,7,19,22,136.562500,2
