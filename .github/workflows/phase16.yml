@@ -1,0 +1,41 @@
+name: Phase 16 exact reproducibility
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - experiments/phase16.py
+      - .github/workflows/phase16.yml
+permissions:
+  contents: write
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install locked numerical dependencies
+        run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - name: Run exact experiment
+        run: python experiments/phase16.py
+      - name: Collect generated results
+        run: |
+          mkdir -p results/phase16
+          mv experiments/raw_results.csv experiments/summary.csv experiments/environment.json results/phase16/
+          sha256sum experiments/phase16.py results/phase16/* > results/phase16/SHA256SUMS.txt
+      - name: Commit exact raw outputs to repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/phase16
+          if ! git diff --cached --quiet; then
+            git commit -m "Record exact Phase 16 raw benchmark results"
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: phase16-exact-raw
+          path: results/phase16/
