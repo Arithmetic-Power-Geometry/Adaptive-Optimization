@@ -1,0 +1,9 @@
+regime,method,n,mean_calls,W_Full,L_Full,T_Full,W_Embed8,L_Embed8,T_Embed8,W_Restart8,L_Restart8,T_Restart8,W_Gate8Full,L_Gate8Full,T_Gate8Full
+low4,Full,6,160.0,0,0,6,1,5,0,1,5,0,6,0,0
+low4,Embed8,6,158.33,5,1,0,0,0,6,3,0,3,5,0,1
+low4,Restart8,6,160.0,5,1,0,0,3,3,0,0,6,5,1,0
+low4,Gate8Full,6,160.0,0,6,0,0,5,1,1,5,0,0,0,6
+full,Full,6,113.33,0,0,6,6,0,0,6,0,0,3,0,3
+full,Embed8,6,94.83,0,6,0,0,0,6,0,6,0,1,5,0
+full,Restart8,6,121.17,0,6,0,6,0,0,0,0,6,3,3,0
+full,Gate8Full,6,132.67,0,3,3,5,1,0,3,3,0,0,0,6
