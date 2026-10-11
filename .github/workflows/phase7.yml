@@ -1,0 +1,26 @@
+name: Phase 7 held-out target study
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - experiments/phase7_heldout_targets.py
+      - .github/workflows/phase7.yml
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install numpy==2.3.5 scipy==1.17.0
+      - name: Run 960 held-out trials
+        working-directory: experiments
+        run: python phase7_heldout_targets.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase7-raw-and-summary
+          path: |
+            experiments/phase7_raw_results.csv
+            experiments/phase7_summary.csv
